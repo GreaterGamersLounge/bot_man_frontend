@@ -1,12 +1,12 @@
 import React from "react";
-import { AppBar, Toolbar } from '@material-ui/core';
-import Tabs from './Tabs';
+import { AppBar, Toolbar } from "@material-ui/core";
+import Tabs from "./Tabs";
 import styled from "styled-components";
 
 const StyledH1 = styled.h1`
   margin: 5px;
   padding-right: 10px;
-`
+`;
 
 function Appbar() {
   return (
