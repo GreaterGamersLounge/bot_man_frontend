@@ -43,16 +43,15 @@ export const userPostFetch = user => {
 
 // Initial user state
 const initialState = {
-  user: {
-    email: "",
-    token: ""
-  }
+  id: null,
+  email: "",
+  token: ""
 };
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_USER:
-      return { ...state, user: action.user };
+      return { ...action.user };
     default:
       return state;
   }
