@@ -3,20 +3,18 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./components/app/App";
 import * as serviceWorker from "./serviceWorker";
-import { createStore, applyMiddleware } from "redux";
-import reduxThunk from "redux-thunk";
-import Reducers from "./redux/reducers";
-import { BrowserRouter as Router } from "react-router-dom";
+import { ConnectedRouter } from "connected-react-router";
 import { Provider } from "react-redux";
+import configureStore, { history } from "./redux/store";
 
-const Store = createStore(Reducers, {}, applyMiddleware(reduxThunk));
+const store = configureStore({});
 
 ReactDOM.render(
-  <Router>
-    <Provider store={Store}>
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
       <App />
-    </Provider>
-  </Router>,
+    </ConnectedRouter>
+  </Provider>,
   document.getElementById("root")
 );
 

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { userPostFetch } from "../../redux/actions";
+import { userPostFetch } from "../../redux/user";
 
 class Signup extends Component {
   state = {
@@ -25,6 +25,7 @@ class Signup extends Component {
         <h1>Login</h1>
 
         <label>Email</label>
+        <br />
         <input
           name="email"
           placeholder="Email"
@@ -32,8 +33,10 @@ class Signup extends Component {
           onChange={this.handleChange}
         />
         <br />
+        <br />
 
         <label>Password</label>
+        <br />
         <input
           type="password"
           name="password"
@@ -41,6 +44,7 @@ class Signup extends Component {
           value={this.state.password}
           onChange={this.handleChange}
         />
+        <br />
         <br />
 
         <input type="submit" />
