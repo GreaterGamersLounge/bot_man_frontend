@@ -4,8 +4,8 @@ import Tabs from './Tabs';
 import styled from "styled-components";
 
 const StyledH1 = styled.h1`
-  margin: 5;
-  padding-right: 10;
+  margin: 5px;
+  padding-right: 10px;
 `
 
 function Appbar() {
