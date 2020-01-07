@@ -1,7 +1,7 @@
 import React from "react";
 import { Tabs, Tab } from '@material-ui/core';
-import History from "../../History";
 import { withStyles } from "@material-ui/styles";
+import { Link, withRouter } from "react-router-dom";
 
 const StyledTabs = withStyles(theme => ({
   root: {
@@ -24,11 +24,11 @@ function MyTabs() {
       style={{ marginTop: "auto", marginBottom: 0 }}
       scrollButtons="auto"
     >
-      <StyledTabs to='/' value='/' label="Home"/>
-      <StyledTabs to='/users' value='/users' label="Users" />
+      <StyledTabs to='/' value='/' label="Home" component={Link}/>
+      <StyledTabs to='/users' value='/users' label="Users" component={Link} />
       <StyledTabs label="Home3" />
     </Tabs>
   );
 }
 
-export default MyTabs;
+export default withRouter(MyTabs);
