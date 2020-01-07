@@ -1,33 +1,27 @@
 import React from "react";
 import { Tabs, Tab } from '@material-ui/core';
-import { withStyles } from "@material-ui/styles";
 import { Link, withRouter } from "react-router-dom";
+import styled from "styled-components";
 
-const StyledTabs = withStyles(theme => ({
-  root: {
-    fontSize:'20px'
-  }
-}))(props=><Tab {...props}/>)
+const StyledTab = styled(Tab)`
+  font-size:20px !important
+`
 
-function MyTabs() {
-  let location=window.location.pathname;
-  const [value, setValue] = React.useState(location);
+const StyledTabs = styled(Tabs)`
+  margin-top:auto;
+  margin-bottom:0px;
+`
 
-  const changeTabValue=(_,newValue)=>{
-    setValue(newValue);
-  }
-
+const MyTabs = (props) => {
   return (
-    <Tabs
-      value={value}
-      onChange={changeTabValue}
-      style={{ marginTop: "auto", marginBottom: 0 }}
+    <StyledTabs
+      value={props.location.pathname}
       scrollButtons="auto"
     >
-      <StyledTabs to='/' value='/' label="Home" component={Link}/>
-      <StyledTabs to='/users' value='/users' label="Users" component={Link} />
-      <StyledTabs label="Home3" />
-    </Tabs>
+      <StyledTab to='/' value='/' label="Home" component={Link}/>
+      <StyledTab to='/users' value='/users' label="Users" component={Link} />
+      <StyledTab label="Home3" />
+    </StyledTabs>
   );
 }
 

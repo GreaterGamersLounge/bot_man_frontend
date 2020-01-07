@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Grid, Toolbar } from '@material-ui/core';
+import { AppBar, Toolbar } from '@material-ui/core';
 import Tabs from './Tabs';
 import styled from "styled-components";
 
