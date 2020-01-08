@@ -16,7 +16,9 @@ class Signup extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.userPostFetch(this.state);
+
+    const { _userPostFetch } = this.props;
+    _userPostFetch(this.state);
   };
 
   render() {
@@ -53,8 +55,8 @@ class Signup extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  userPostFetch: userInfo => dispatch(userPostFetch(userInfo))
-});
+const mapDispatchToProps = {
+  _userPostFetch: userPostFetch
+};
 
 export default connect(null, mapDispatchToProps)(Signup);

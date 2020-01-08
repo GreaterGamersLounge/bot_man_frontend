@@ -13,32 +13,30 @@ const logoutUser = user => ({
 });
 
 // Action helpers
-export const userPostFetch = user => {
-  return dispatch => {
-    return fetch(`${API_URL}/users/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        user: {
-          ...user
-        }
-      })
+export const userPostFetch = user => dispatch => {
+  return fetch(`${API_URL}/users/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify({
+      user: {
+        ...user
+      }
     })
-      .then(resp => resp.json())
-      .then(data => {
-        console.log(data);
+  })
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data);
 
-        if (data.errors) {
-          alert(JSON.stringify(data.errors));
-        } else {
-          localStorage.setItem("token", data.user.token);
-          dispatch(loginUser(data.user));
-        }
-      });
-  };
+      if (data.errors) {
+        alert(JSON.stringify(data.errors));
+      } else {
+        localStorage.setItem("token", data.user.token);
+        dispatch(loginUser(data.user));
+      }
+    });
 };
 
 // Initial user state
