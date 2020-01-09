@@ -11,43 +11,38 @@ const StyledButton = styled(Button)`
 `;
 
 const StyledDiv = styled.div`
-  margin-bottom: 0px;
-  margin-top: auto;
-  float:right
+  position: absolute;
+  top: 10px;
+  right: 20px;
 `;
 
-class MyTabs extends Component{
+class MyTabs extends Component {
   openSignup = () => {
     this.props._updateDialog(true, {
       title: "Sign Up"
-    })
-  }
+    });
+  };
 
   openLogin = () => {
     this.props._updateDialog(true, {
       title: "Login",
-      content:Signup,
-    })
-  }
+      content: Signup
+    });
+  };
 
   render() {
-    if (this.props.user.token=="") {
+    if (this.props.user.token == "") {
       return (
         <StyledDiv>
-          <StyledButton
-            onClick={this.openLogin}
-          >
-            Login
-          </StyledButton>
+          <StyledButton onClick={this.openLogin}>Login</StyledButton>
           {/* <StyledButton
             onClick={this.openSignup}
           >
             Sign Up
           </StyledButton> */}
         </StyledDiv>
-      )
-    }
-    else {
+      );
+    } else {
       return null;
     }
   }

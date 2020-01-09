@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { userPostFetch } from "../../redux/user";
+import { updateDialog } from "../../redux/dialog";
 import { TextField, Button } from "@material-ui/core";
 import styled from "styled-components";
 
-const StyledDiv = styled.div`
-  text-align:center
-`;
+const StyledDiv = styled.div`text-align: center;`;
 
 const StyledButton = styled(Button)`
   margin-top:20px !important;
-`
+  margin-right:10px !important;
+`;
 
 class Signup extends Component {
   state = {
@@ -25,8 +25,9 @@ class Signup extends Component {
   };
 
   handleSubmit = event => {
-    const { _userPostFetch } = this.props;
+    const { _userPostFetch, _updateDialog } = this.props;
     _userPostFetch(this.state);
+    _updateDialog(false, null);
   };
 
   render() {
@@ -37,8 +38,9 @@ class Signup extends Component {
           name="email"
           fullWidth
           value={this.state.email}
-          onChange={this.handleChange} />
-        <br/>
+          onChange={this.handleChange}
+        />
+        <br />
         <TextField
           label="Password"
           name="password"
@@ -46,16 +48,31 @@ class Signup extends Component {
           fullWidth
           type="password"
           autoComplete="current-password"
-          onChange={this.handleChange} />
+          onChange={this.handleChange}
+        />
         <br />
-        <StyledButton color="primary" style={{margin:"0 auto"}} variant="contained" onClick={this.handleSubmit}>Login</StyledButton>
+        <StyledButton
+          color="primary"
+          variant="contained"
+          onClick={this.handleSubmit}
+        >
+          Login
+        </StyledButton>
+        <StyledButton
+          color="primary"
+          variant="contained"
+          onClick={this.handleSubmit}
+        >
+          Cancel
+        </StyledButton>
       </StyledDiv>
     );
   }
 }
 
 const mapDispatchToProps = {
-  _userPostFetch: userPostFetch
+  _userPostFetch: userPostFetch,
+  _updateDialog: updateDialog
 };
 
 export default connect(null, mapDispatchToProps)(Signup);

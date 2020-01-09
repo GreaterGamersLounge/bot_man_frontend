@@ -6,31 +6,32 @@ import styled from "styled-components";
 
 const StyledDialog = styled(Dialog)`
 
-`
+`;
 
 class DialogTemplate extends Component {
   renderContent = () => {
-    if (this.props.dialog.object.content == null)
-      return null;
+    if (this.props.dialog.object.content == null) return null;
     let Content = this.props.dialog.object.content;
-    return <Content />
-  }
+    return <Content />;
+  };
 
   render() {
-    console.log(this.props)
     return (
       <Dialog
         open={this.props.dialog.open || false}
         fullWidth
         maxWidth="sm"
-        onClose={()=>this.props._updateDialog(false,null)}
+        onClose={() => this.props._updateDialog(false, null)}
       >
-        <DialogTitle>{this.props.dialog.object.title||""}</DialogTitle>
-        <DialogContent>{this.renderContent()}</DialogContent>
+        <DialogTitle>
+          {this.props.dialog.object.title || ""}
+        </DialogTitle>
+        <DialogContent>
+          {this.renderContent()}
+        </DialogContent>
       </Dialog>
     );
   }
-  
 }
 
 const mapStateToProps = state => ({
@@ -41,4 +42,4 @@ const mapDispatchToProps = {
   _updateDialog: updateDialog
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(DialogTemplate);
+export default connect(mapStateToProps, mapDispatchToProps)(DialogTemplate);
