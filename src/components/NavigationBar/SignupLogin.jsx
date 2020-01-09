@@ -37,7 +37,7 @@ class MyTabs extends Component {
     const { user } = this.props;
     const { token } = user;
 
-    if (!token) {
+    if (token) {
       const { _userLogout } = this.props;
 
       return (

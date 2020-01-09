@@ -37,7 +37,7 @@ DialogTemplate.propTypes = {
     open: PropTypes.bool,
     object: PropTypes.shape({
       title: PropTypes.string,
-      content: PropTypes.node
+      content: PropTypes.object
     })
   }).isRequired,
   _updateDialog: PropTypes.func.isRequired
