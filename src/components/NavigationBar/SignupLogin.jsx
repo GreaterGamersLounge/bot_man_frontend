@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Button } from "@material-ui/core";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import { updateDialog } from "../../redux/dialog";
 import Signup from "../../pages/login/Login";
+import { userLogout } from "../../redux/user";
 
 const StyledButton = styled(Button)`
   color: white !important;
@@ -36,35 +36,32 @@ class MyTabs extends Component {
   render() {
     const { user } = this.props;
     const { token } = user;
-    if (token === "") {
+
+    if (!token) {
+      const { _userLogout } = this.props;
+
+      return (
+        <StyledDiv>
+          <StyledButton onClick={_userLogout}>Log Out</StyledButton>
+        </StyledDiv>
+      );
+    } else {
       return (
         <StyledDiv>
           <StyledButton onClick={this.openLogin}>Login</StyledButton>
-          {/* <StyledButton
-            onClick={this.openSignup}
-          >
-            Sign Up
-          </StyledButton> */}
         </StyledDiv>
       );
     }
-    return null;
   }
 }
-
-MyTabs.propTypes = {
-  user: PropTypes.shape({
-    token: PropTypes.string
-  }).isRequired,
-  _updateDialog: PropTypes.func.isRequired
-};
 
 const mapStateToProps = state => ({
   user: state.user
 });
 
 const mapDispatchToProps = {
-  _updateDialog: updateDialog
+  _updateDialog: updateDialog,
+  _userLogout: userLogout
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyTabs);

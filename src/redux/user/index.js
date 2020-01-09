@@ -39,11 +39,16 @@ export const userPostFetch = user => dispatch => {
     });
 };
 
+export const userLogout = () => dispatch => {
+  localStorage.removeItem("token");
+  dispatch(logoutUser());
+};
+
 // Initial user state
 const initialState = {
   id: null,
   email: "",
-  token: ""
+  token: localStorage.token
 };
 
 const userReducer = (state = initialState, action) => {
