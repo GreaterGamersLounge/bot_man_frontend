@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { ConnectedRouter } from "connected-react-router";
+import { Provider } from "react-redux";
 import "./index.css";
 import App from "./components/app/App";
 import * as serviceWorker from "./serviceWorker";
-import { ConnectedRouter } from "connected-react-router";
-import { Provider } from "react-redux";
 import configureStore, { history } from "./redux/store";
 
 const store = configureStore({});

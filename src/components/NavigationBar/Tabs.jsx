@@ -13,8 +13,10 @@ const StyledTabs = styled(Tabs)`
 `;
 
 const MyTabs = props => {
+  const { location } = props;
+  const { pathname } = location;
   return (
-    <StyledTabs value={props.location.pathname} scrollButtons="auto">
+    <StyledTabs value={pathname} scrollButtons="auto">
       <StyledTab to="/" value="/" label="Home" component={Link} />
       <StyledTab to="/users" value="/users" label="Users" component={Link} />
       <StyledTab label="Home3" />

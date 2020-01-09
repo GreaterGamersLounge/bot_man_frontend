@@ -1,32 +1,41 @@
 import React, { Component } from "react";
 import { Dialog, DialogTitle, DialogContent } from "@material-ui/core";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { updateDialog } from "../../redux/dialog";
-import styled from "styled-components";
-
-const StyledDialog = styled(Dialog)``;
 
 class DialogTemplate extends Component {
   renderContent = () => {
-    if (this.props.dialog.object.content == null) return null;
-    let Content = this.props.dialog.object.content;
+    const { dialog } = this.props;
+    const { object } = dialog;
+    const { content } = object;
+    if (content == null) return null;
+    const Content = content;
     return <Content />;
   };
 
   render() {
+    const { dialog, _updateDialog } = this.props;
+    const { open, object } = dialog;
+    const { title } = object;
     return (
       <Dialog
-        open={this.props.dialog.open || false}
+        open={open || false}
         fullWidth
         maxWidth="sm"
-        onClose={() => this.props._updateDialog(false, null)}
+        onClose={() => _updateDialog(false, null)}
       >
-        <DialogTitle>{this.props.dialog.object.title || ""}</DialogTitle>
+        <DialogTitle>{title || ""}</DialogTitle>
         <DialogContent>{this.renderContent()}</DialogContent>
       </Dialog>
     );
   }
 }
+
+DialogTemplate.propTypes = {
+  dialog: PropTypes.object,
+  _updateDialog: PropTypes.func
+};
 
 const mapStateToProps = state => ({
   dialog: state.dialog

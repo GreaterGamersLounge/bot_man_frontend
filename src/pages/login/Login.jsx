@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { userPostFetch } from "../../redux/user";
-import { updateDialog } from "../../redux/dialog";
 import { TextField, Button } from "@material-ui/core";
 import styled from "styled-components";
+import { userPostFetch } from "../../redux/user";
+import { updateDialog } from "../../redux/dialog";
 
 const StyledDiv = styled.div`
   text-align: center;
@@ -14,11 +14,14 @@ const StyledButton = styled(Button)`
   margin-right: 10px !important;
 `;
 
-class Signup extends Component {
-  state = {
-    email: "",
-    password: ""
-  };
+class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: ""
+    };
+  }
 
   handleChange = event => {
     this.setState({
@@ -26,27 +29,28 @@ class Signup extends Component {
     });
   };
 
-  handleSubmit = event => {
+  handleSubmit = () => {
     const { _userPostFetch, _updateDialog } = this.props;
     _userPostFetch(this.state);
     _updateDialog(false, null);
   };
 
   render() {
+    const { email, password } = this.state;
     return (
       <StyledDiv>
         <TextField
           label="Email"
           name="email"
           fullWidth
-          value={this.state.email}
+          value={email}
           onChange={this.handleChange}
         />
         <br />
         <TextField
           label="Password"
           name="password"
-          value={this.state.password}
+          value={password}
           fullWidth
           type="password"
           autoComplete="current-password"
@@ -77,4 +81,4 @@ const mapDispatchToProps = {
   _updateDialog: updateDialog
 };
 
-export default connect(null, mapDispatchToProps)(Signup);
+export default connect(null, mapDispatchToProps)(Login);

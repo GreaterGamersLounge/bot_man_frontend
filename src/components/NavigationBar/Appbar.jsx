@@ -1,7 +1,7 @@
 import React from "react";
 import { AppBar, Toolbar } from "@material-ui/core";
-import Tabs from "./Tabs";
 import styled from "styled-components";
+import Tabs from "./Tabs";
 import SignupLogin from "./SignupLogin";
 
 const StyledH1 = styled.h1`

@@ -3,7 +3,7 @@ import { Button } from "@material-ui/core";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { updateDialog } from "../../redux/dialog";
-import Signup from "../../pages/users/Signup";
+import Signup from "../../pages/login/Login";
 
 const StyledButton = styled(Button)`
   color: white !important;
@@ -18,20 +18,24 @@ const StyledDiv = styled.div`
 
 class MyTabs extends Component {
   openSignup = () => {
-    this.props._updateDialog(true, {
+    const { _updateDialog } = this.props;
+    _updateDialog(true, {
       title: "Sign Up"
     });
   };
 
   openLogin = () => {
-    this.props._updateDialog(true, {
+    const { _updateDialog } = this.props;
+    _updateDialog(true, {
       title: "Login",
       content: Signup
     });
   };
 
   render() {
-    if (this.props.user.token == "") {
+    const { user } = this.props;
+    const { token } = user;
+    if (token === "") {
       return (
         <StyledDiv>
           <StyledButton onClick={this.openLogin}>Login</StyledButton>
@@ -42,9 +46,8 @@ class MyTabs extends Component {
           </StyledButton> */}
         </StyledDiv>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 }
 
