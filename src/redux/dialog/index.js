@@ -9,17 +9,17 @@ const openDialog = dialog => ({
 // Action helpers
 export const updateDialog = (open, object) => dispatch => {
   if (object == null) {
-    object=initialState.object
+    object = initialState.object;
   }
-  dispatch(openDialog({open, object}));
-}
+  dispatch(openDialog({ open, object }));
+};
 
 // Initial dialog state
 const initialState = {
   open: false,
   object: {
     title: "",
-    content:null
+    content: null
   }
 };
 

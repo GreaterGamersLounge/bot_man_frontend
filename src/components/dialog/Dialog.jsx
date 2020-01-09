@@ -4,9 +4,7 @@ import { connect } from "react-redux";
 import { updateDialog } from "../../redux/dialog";
 import styled from "styled-components";
 
-const StyledDialog = styled(Dialog)`
-
-`;
+const StyledDialog = styled(Dialog)``;
 
 class DialogTemplate extends Component {
   renderContent = () => {
@@ -23,12 +21,8 @@ class DialogTemplate extends Component {
         maxWidth="sm"
         onClose={() => this.props._updateDialog(false, null)}
       >
-        <DialogTitle>
-          {this.props.dialog.object.title || ""}
-        </DialogTitle>
-        <DialogContent>
-          {this.renderContent()}
-        </DialogContent>
+        <DialogTitle>{this.props.dialog.object.title || ""}</DialogTitle>
+        <DialogContent>{this.renderContent()}</DialogContent>
       </Dialog>
     );
   }

@@ -5,11 +5,13 @@ import { updateDialog } from "../../redux/dialog";
 import { TextField, Button } from "@material-ui/core";
 import styled from "styled-components";
 
-const StyledDiv = styled.div`text-align: center;`;
+const StyledDiv = styled.div`
+  text-align: center;
+`;
 
 const StyledButton = styled(Button)`
-  margin-top:20px !important;
-  margin-right:10px !important;
+  margin-top: 20px !important;
+  margin-right: 10px !important;
 `;
 
 class Signup extends Component {

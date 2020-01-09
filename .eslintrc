@@ -2,5 +2,6 @@
   "env": {
     "browser": true
   },
-  "extends": ["airbnb", "prettier"]
+  "extends": ["airbnb", "prettier"],
+  "parser": "babel-eslint"
 }
