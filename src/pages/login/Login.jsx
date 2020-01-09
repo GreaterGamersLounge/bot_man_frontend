@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { TextField, Button } from "@material-ui/core";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import { userPostFetch } from "../../redux/user";
 import { updateDialog } from "../../redux/dialog";
 
@@ -75,6 +76,11 @@ class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  _userPostFetch: PropTypes.func.isRequired,
+  _updateDialog: PropTypes.func.isRequired
+};
 
 const mapDispatchToProps = {
   _userPostFetch: userPostFetch,

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button } from "@material-ui/core";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import { updateDialog } from "../../redux/dialog";
 import Signup from "../../pages/login/Login";
 
@@ -50,6 +51,13 @@ class MyTabs extends Component {
     return null;
   }
 }
+
+MyTabs.propTypes = {
+  user: PropTypes.shape({
+    token: PropTypes.string
+  }).isRequired,
+  _updateDialog: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => ({
   user: state.user

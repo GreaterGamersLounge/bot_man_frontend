@@ -1,6 +1,7 @@
 import React from "react";
 import { Tabs, Tab } from "@material-ui/core";
 import { Link, withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const StyledTab = styled(Tab)`
@@ -22,6 +23,12 @@ const MyTabs = props => {
       <StyledTab label="Home3" />
     </StyledTabs>
   );
+};
+
+MyTabs.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string
+  }).isRequired
 };
 
 export default withRouter(MyTabs);

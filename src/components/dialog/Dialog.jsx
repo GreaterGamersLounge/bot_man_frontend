@@ -33,8 +33,14 @@ class DialogTemplate extends Component {
 }
 
 DialogTemplate.propTypes = {
-  dialog: PropTypes.object,
-  _updateDialog: PropTypes.func
+  dialog: PropTypes.shape({
+    open: PropTypes.bool,
+    object: PropTypes.shape({
+      title: PropTypes.string,
+      content: PropTypes.node
+    })
+  }).isRequired,
+  _updateDialog: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
