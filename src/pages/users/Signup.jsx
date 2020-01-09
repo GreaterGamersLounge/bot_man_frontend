@@ -1,6 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { userPostFetch } from "../../redux/user";
+import { TextField, Button } from "@material-ui/core";
+import styled from "styled-components";
+
+const StyledDiv = styled.div`
+  text-align:center
+`;
+
+const StyledButton = styled(Button)`
+  margin-top:20px !important;
+`
 
 class Signup extends Component {
   state = {
@@ -15,42 +25,31 @@ class Signup extends Component {
   };
 
   handleSubmit = event => {
-    event.preventDefault();
-
     const { _userPostFetch } = this.props;
     _userPostFetch(this.state);
   };
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h1>Login</h1>
-
-        <label>Email</label>
-        <br />
-        <input
+      <StyledDiv>
+        <TextField
+          label="Email"
           name="email"
-          placeholder="Email"
+          fullWidth
           value={this.state.email}
-          onChange={this.handleChange}
-        />
-        <br />
-        <br />
-
-        <label>Password</label>
-        <br />
-        <input
-          type="password"
+          onChange={this.handleChange} />
+        <br/>
+        <TextField
+          label="Password"
           name="password"
-          placeholder="Password"
           value={this.state.password}
-          onChange={this.handleChange}
-        />
+          fullWidth
+          type="password"
+          autoComplete="current-password"
+          onChange={this.handleChange} />
         <br />
-        <br />
-
-        <input type="submit" />
-      </form>
+        <StyledButton color="primary" style={{margin:"0 auto"}} variant="contained" onClick={this.handleSubmit}>Login</StyledButton>
+      </StyledDiv>
     );
   }
 }

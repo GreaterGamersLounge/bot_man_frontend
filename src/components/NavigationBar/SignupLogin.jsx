@@ -39,11 +39,11 @@ class MyTabs extends Component{
           >
             Login
           </StyledButton>
-          <StyledButton
+          {/* <StyledButton
             onClick={this.openSignup}
           >
             Sign Up
-          </StyledButton>
+          </StyledButton> */}
         </StyledDiv>
       )
     }

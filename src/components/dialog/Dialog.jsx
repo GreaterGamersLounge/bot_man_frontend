@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import { Dialog, DialogTitle, DialogContent } from "@material-ui/core";
 import { connect } from "react-redux";
-import { updateDialog } from "../../redux/dialog"
+import { updateDialog } from "../../redux/dialog";
+import styled from "styled-components";
+
+const StyledDialog = styled(Dialog)`
+
+`
 
 class DialogTemplate extends Component {
   renderContent = () => {
@@ -15,7 +20,9 @@ class DialogTemplate extends Component {
     console.log(this.props)
     return (
       <Dialog
-        open={this.props.dialog.open||false}
+        open={this.props.dialog.open || false}
+        fullWidth
+        maxWidth="sm"
         onClose={()=>this.props._updateDialog(false,null)}
       >
         <DialogTitle>{this.props.dialog.object.title||""}</DialogTitle>
