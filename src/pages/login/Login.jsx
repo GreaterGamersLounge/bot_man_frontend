@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { TextField, Button } from "@material-ui/core";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { userPostFetch } from "../../redux/user";
+import { userLogin } from "../../redux/user";
 import { updateDialog } from "../../redux/dialog";
 
 const StyledDiv = styled.div`
@@ -83,7 +83,7 @@ Login.propTypes = {
 };
 
 const mapDispatchToProps = {
-  _userPostFetch: userPostFetch,
+  _userPostFetch: userLogin,
   _updateDialog: updateDialog
 };
 
