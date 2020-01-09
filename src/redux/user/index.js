@@ -35,7 +35,12 @@ export const userLogin = user => dispatch => {
         alert(JSON.stringify(data.errors));
       } else {
         localStorage.setItem("token", data.user.token);
+
+        // TODO: remove this after real token verification is
+        // happening on initial page load
+        // This is just here for testing of the route/method.
         dispatch(userCheckToken(data.user.token));
+
         dispatch(loginUser(data.user));
       }
     });
