@@ -6,14 +6,6 @@ const openDialog = dialog => ({
   dialog
 });
 
-// Action helpers
-export const updateDialog = (open, object) => dispatch => {
-  if (object == null) {
-    object = initialState.object;
-  }
-  dispatch(openDialog({ open, object }));
-};
-
 // Initial dialog state
 const initialState = {
   open: false,
@@ -21,6 +13,12 @@ const initialState = {
     title: "",
     content: null
   }
+};
+
+// Action helpers
+export const updateDialog = (open, object) => dispatch => {
+  let dialog = object == null ? initialState.object : object;
+  dispatch(openDialog({ open, dialog }));
 };
 
 const dialogReducer = (state = initialState, action) => {
