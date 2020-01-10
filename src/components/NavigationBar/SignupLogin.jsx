@@ -35,9 +35,8 @@ class MyTabs extends Component {
 
   render() {
     const { user } = this.props;
-    const { token } = user;
 
-    if (token) {
+    if (user.isSignedIn) {
       const { _userLogout } = this.props;
 
       return (

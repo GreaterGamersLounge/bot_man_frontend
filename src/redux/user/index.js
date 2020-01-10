@@ -35,12 +35,6 @@ export const userLogin = user => dispatch => {
         alert(JSON.stringify(data.errors));
       } else {
         localStorage.setItem("token", data.user.token);
-
-        // TODO: remove this after real token verification is
-        // happening on initial page load
-        // This is just here for testing of the route/method.
-        dispatch(userCheckToken(data.user.token));
-
         dispatch(loginUser(data.user));
       }
     });
@@ -51,27 +45,34 @@ export const userLogout = () => dispatch => {
   dispatch(logoutUser());
 };
 
-export const userCheckToken = token => dispatch => {
-  return fetch(`${URL}/users/profile`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`
-    }
-  })
-    .then(resp => resp.json())
-    .then(data => {
-      console.log(data);
+export const userCheckToken = () => dispatch => {
+  const token = localStorage.token;
+  console.log(token);
 
-      if (data.id) {
-        // The user token is valid
-        // TODO: set the reset of the user state here correctly,
-        // since all we have currently is the token.
-      } else {
-        // The user token is invalid
-        dispatch(userLogout());
+  if (token) {
+    return fetch(`${URL}/users/profile`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
       }
-    });
+    })
+      .then(resp => resp.json())
+      .then(data => {
+        if (data.id) {
+          // The user token is valid
+          dispatch(
+            loginUser({
+              ...data,
+              token
+            })
+          );
+        } else {
+          // The user token is invalid
+          dispatch(userLogout());
+        }
+      });
+  }
 };
 
 // Initial user state
