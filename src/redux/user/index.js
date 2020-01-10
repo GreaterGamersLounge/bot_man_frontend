@@ -47,8 +47,6 @@ export const userLogout = () => dispatch => {
 
 export const userCheckToken = () => dispatch => {
   const token = localStorage.token;
-  console.log(token);
-
   if (token) {
     return fetch(`${URL}/users/profile`, {
       method: "GET",
