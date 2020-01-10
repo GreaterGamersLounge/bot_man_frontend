@@ -78,7 +78,7 @@ const initialState = {
   id: null,
   email: "",
   isSignedIn: false,
-  token: localStorage.token
+  token: localStorage.token || ""
 };
 
 const userReducer = (state = initialState, action) => {
