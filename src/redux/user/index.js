@@ -1,6 +1,9 @@
 import { LOGIN_USER, LOGOUT_USER } from "../action_types";
 
-const URL = "http://localhost:3001";
+// const URL = "http://localhost:3001";
+// const URL = "https://ggl-bot-man.herokuapp.com";
+const URL = process.env.REACT_APP_API_URL;
+
 const API_URL = `${URL}/api`;
 
 // Action creators
