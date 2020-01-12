@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { Toolbar, Card } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import styled from "styled-components";
 
@@ -12,7 +11,7 @@ const StyledSkeleton = styled(Skeleton)`
   margin-top: 10px;
 `;
 
-class UsersList extends Component {
+class HomePage extends Component {
   constructor(props) {
     super(props);
     const placeholderList = [];
@@ -43,11 +42,11 @@ class UsersList extends Component {
     const { displayList, placeholderList } = this.state;
     return (
       <StyledDiv>
-        <h1>Users</h1>
+        <h1>Home</h1>
         {displayList.length === 0 ? placeholderList : displayList}
       </StyledDiv>
     );
   }
 }
 
-export default UsersList;
+export default HomePage;

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router";
-import Signup from "../../pages/login/Login";
 import Appbar from "../NavigationBar/Appbar";
 import Dialog from "../dialog/Dialog";
 import UsersList from "../../pages/users/UsersList";
 import { userCheckToken } from "../../redux/user";
 import { connect } from "react-redux";
+import HomePage from "../../pages/home";
 
 class App extends Component {
   componentDidMount = () => {
@@ -18,7 +18,7 @@ class App extends Component {
       <div>
         <Appbar />
         <Switch>
-          <Route exact path="/" render={() => <Signup />} />
+          <Route exact path="/" render={() => <HomePage />} />
           <Route path="/users" render={() => <UsersList />} />
         </Switch>
         <Dialog />
