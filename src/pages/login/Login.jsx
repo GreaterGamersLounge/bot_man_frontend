@@ -30,6 +30,11 @@ class Login extends Component {
     });
   };
 
+  handleClose = () => {
+    const { _updateDialog } = this.props;
+    _updateDialog(false, null);
+  };
+
   handleSubmit = () => {
     const { _userPostFetch, _updateDialog } = this.props;
     _userPostFetch(this.state);
@@ -68,7 +73,7 @@ class Login extends Component {
         <StyledButton
           color="primary"
           variant="contained"
-          onClick={this.handleSubmit}
+          onClick={this.handleClose}
         >
           Cancel
         </StyledButton>
