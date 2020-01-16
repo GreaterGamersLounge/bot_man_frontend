@@ -5,6 +5,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { userLogin } from "../../redux/user";
 import { updateDialog } from "../../redux/dialog";
+import DiscordLogin from "../../components/DiscordLogin";
 
 const StyledDiv = styled.div`
   text-align: center;
@@ -62,6 +63,8 @@ class Login extends Component {
           autoComplete="current-password"
           onChange={this.handleChange}
         />
+        <br />
+        <DiscordLogin />
         <br />
         <StyledButton
           color="primary"

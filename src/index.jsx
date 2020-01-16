@@ -7,6 +7,15 @@ import App from "./components/app/App";
 import * as serviceWorker from "./serviceWorker";
 import configureStore, { history } from "./redux/store";
 
+// Save the token to local storage, then remove it from the  URL
+const params = new URLSearchParams(window.location.search);
+const token = params.get("token");
+if (token) {
+  localStorage.setItem("token", token);
+  params.delete("token");
+  window.location.href = window.location.origin + window.location.pathname;
+}
+
 const store = configureStore({});
 
 ReactDOM.render(
