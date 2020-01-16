@@ -4,6 +4,7 @@ import { Button } from "@material-ui/core";
 import styled from "styled-components";
 import DiscordLogo from "./Discord-Logo+Wordmark-Color.svg";
 import { Link, withRouter } from "react-router-dom";
+import { URL } from "../config";
 
 const DiscordButton = styled(Button)`
   background-color: #7289da !important;
@@ -30,7 +31,7 @@ class DiscordLogin extends Component {
     console.log(e);
     e.preventDefault();
     // this.props.history.push("/dashboard");
-    window.location.href = "http://localhost:3001/auth/discord";
+    window.location.href = `${URL}/auth/discord`;
     // window.location.href = "/auth/discord";
     // window.location.replace("/auth/discord");
   };
