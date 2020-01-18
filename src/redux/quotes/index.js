@@ -1,6 +1,5 @@
 import { GET_QUOTE_LIST } from "../action_types";
 import { URL, API_URL } from "../../components/config";
-import axios from "axios";
 
 // Action creators
 const getQuotes = quote => ({
@@ -15,9 +14,20 @@ const initialState = {
 
 // Action helpers
 export const getQuoteList = () => dispatch => {
-  axios.get(`${API_URL}/users/login`, response => {
-    dispatch(getQuotes(response.data));
-  });
+  fetch(`${URL}/quotes`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(resp => resp.json())
+    .then(data => {
+      dispatch(
+        getQuotes({
+          ...data
+        })
+      );
+    });
 };
 
 const quoteReducer = (state = initialState, action) => {

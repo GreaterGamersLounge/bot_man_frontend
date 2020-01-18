@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Skeleton } from "@material-ui/lab";
+import { Card } from "@material-ui/core";
+import { connect } from "react-redux";
 import styled from "styled-components";
+import { getQuoteList } from "../../redux/quotes";
 
 const StyledDiv = styled.div`
   width: 60vw;
@@ -28,6 +31,9 @@ class QuotesList extends Component {
 
   componentDidMount = () => {
     const { quoteList } = this.props;
+    if (this.state.displayList.length !== quoteList.length) {
+      this.props._getQuoteList();
+    }
     const tempList = [];
     for (let item in quoteList) {
       tempList.push(<Card></Card>);
@@ -36,17 +42,21 @@ class QuotesList extends Component {
 
   render() {
     const { displayList, placeholderList } = this.state;
-    return <StyledDiv></StyledDiv>;
+    return (
+      <StyledDiv>
+        <h1>Quotes</h1>
+        {displayList.length === 0 ? placeholderList : displayList}
+      </StyledDiv>
+    );
   }
 }
 
 const mapStateToProps = state => ({
-  quoteList: state.dialog
+  quoteList: state.quotes
 });
 
 const mapDispatchToProps = {
-  _userPostFetch: userLogin,
-  _updateDialog: updateDialog
+  _getQuoteList: getQuoteList
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuotesList);
