@@ -6,3 +6,4 @@
 export const LOGIN_USER = "[User] - login user";
 export const LOGOUT_USER = "[User] - log out user";
 export const UPDATE_DIALOG_OPEN = "[Dialog] - update dialog open";
+export const GET_QUOTE_LIST = "[Quote] - get all quotes";

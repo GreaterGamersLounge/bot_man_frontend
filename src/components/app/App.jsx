@@ -6,6 +6,7 @@ import UsersList from "../../pages/users/UsersList";
 import { userCheckToken } from "../../redux/user";
 import { connect } from "react-redux";
 import HomePage from "../../pages/home";
+import QuotesList from "../../pages/quotes/QuotesList";
 
 class App extends Component {
   componentDidMount = () => {
@@ -20,6 +21,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={() => <HomePage />} />
           <Route path="/users" render={() => <UsersList />} />
+          <Route path="/quotes" render={() => <QuotesList />} />
         </Switch>
         <Dialog />
       </div>
