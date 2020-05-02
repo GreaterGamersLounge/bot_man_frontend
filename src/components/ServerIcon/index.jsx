@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const ContainerDiv = styled.div`
   width: 175px;
@@ -39,10 +40,12 @@ class ServerIcon extends Component {
     const { name, iconUrl, uid } = this.props;
 
     return (
-      <ContainerDiv key={uid}>
-        <StyledIcon src={iconUrl} alt={name} />
-        <ServerName>{name}</ServerName>
-      </ContainerDiv>
+      <Link to={`/servers/${uid}`}>
+        <ContainerDiv key={uid}>
+          <StyledIcon src={iconUrl} alt={name} />
+          <ServerName>{name}</ServerName>
+        </ContainerDiv>
+      </Link>
     );
   }
 }
