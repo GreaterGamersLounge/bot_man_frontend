@@ -53,8 +53,6 @@ class ServersList extends Component {
     const { placeholderList } = this.state;
     const { servers } = this.props;
 
-    console.log(servers);
-
     const serverIcons =
       servers &&
       servers.map((server, index) => (

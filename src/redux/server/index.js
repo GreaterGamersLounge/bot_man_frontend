@@ -21,8 +21,6 @@ export const loadAvailableServers = () => (dispatch) => {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        console.log(data.servers);
-
         dispatch(loadServers(data.servers));
       });
   }
