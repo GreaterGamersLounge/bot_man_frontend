@@ -20,7 +20,7 @@ const MyTabs = props => {
     <StyledTabs value={pathname} scrollButtons="auto">
       <StyledTab to="/" value="/" label="Home" component={Link} />
       <StyledTab to="/users" value="/users" label="Users" component={Link} />
-      <StyledTab label="Home3" />
+      <StyledTab to="/servers" value="/servers" label="Servers" component={Link} />
     </StyledTabs>
   );
 };
