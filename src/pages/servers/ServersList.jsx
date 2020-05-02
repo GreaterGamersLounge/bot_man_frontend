@@ -4,7 +4,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loadAvailableServers } from "../../redux/server";
-import ServerIcon from "../../components/ServerIcon";
+import ServerIcon from "../../components/servers/ServerIcon";
 
 const StyledDiv = styled.div`
   width: 80vw;
