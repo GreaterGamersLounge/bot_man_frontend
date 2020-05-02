@@ -1,17 +1,49 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 
-const StyledDiv = styled.div`
+const ContainerDiv = styled.div`
+  width: 175px;
+  height: 175px;
+  margin: 10px;
+  background-color: black;
+  position: relative;
+  align-content: center;
+  border-radius: 20px;
+  border: 3px solid rgba(0, 0, 0, 0);
+
+  &:hover {
+    border: 3px solid cyan;
+  }
+`;
+
+const StyledIcon = styled.img`
   width: 128px;
   height: 128px;
+  position: absolute;
+  left: calc((100% - 128px) / 2);
+  margin: 0;
+`;
+
+const ServerName = styled.span`
+  color: white;
+  width: 175px;
+  position: absolute;
+  top: calc(100% - 40px);
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
 `;
 
 class ServerIcon extends Component {
   render() {
-    const { name } = this.props;
+    const { name, iconUrl, uid } = this.props;
 
-    return <h1>{name}</h1>;
+    return (
+      <ContainerDiv key={uid}>
+        <StyledIcon src={iconUrl} alt={name} />
+        <ServerName>{name}</ServerName>
+      </ContainerDiv>
+    );
   }
 }
 

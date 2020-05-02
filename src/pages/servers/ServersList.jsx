@@ -19,6 +19,7 @@ const ServerContainer = styled.div`
 
 const StyledSkeleton = styled(Skeleton)`
   margin: 10px;
+  border-radius: 20px;
 `;
 
 class ServersList extends Component {
@@ -32,8 +33,8 @@ class ServersList extends Component {
           key={i}
           variant="rect"
           animation="wave"
-          height={128}
-          width={128}
+          height={175}
+          width={175}
         />
       );
     }
@@ -53,17 +54,21 @@ class ServersList extends Component {
     const { placeholderList } = this.state;
     const { servers } = this.props;
 
-    const serverIcons =
+    let serverIcons =
       servers &&
-      servers.map((server, index) => (
-        <ServerIcon name={server.name} key={index} />
+      servers.map((server) => (
+        <ServerIcon
+          name={server.name}
+          iconUrl={server.iconUrl}
+          uid={server.uid}
+        />
       ));
 
     return (
       <StyledDiv>
         <h1>Servers</h1>
         <ServerContainer>
-          {servers ? serverIcons : placeholderList}
+          {serverIcons.length == 0 ? placeholderList : serverIcons}
         </ServerContainer>
       </StyledDiv>
     );
