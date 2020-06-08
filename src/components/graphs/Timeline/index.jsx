@@ -2,10 +2,13 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { API_URL } from "../../config";
+import { ResponsiveCalendar } from "@nivo/calendar";
 
-const StyledDiv = styled.div`
+const ContainerDiv = styled.div`
   width: 80vw;
+  height: 300px;
   padding-left: 10vw;
+  /* background-color: red; */
 `;
 
 class Timeline extends Component {
@@ -22,7 +25,6 @@ class Timeline extends Component {
     const token = localStorage.token;
 
     if (token) {
-      console.log(token);
       fetch(`${API_URL}/stats/servers/${uid}/timeline`, {
         method: "GET",
         headers: {
@@ -39,6 +41,37 @@ class Timeline extends Component {
     }
   };
 
+  buildCalendar = () => {
+    const { data } = this.state;
+
+    return (
+      <ResponsiveCalendar
+        data={data}
+        from="2020-03-31"
+        to="2020-06-08"
+        emptyColor="#eeeeee"
+        colors={["#61cdbb", "#97e3d5", "#e8c1a0", "#f47560"]}
+        margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
+        yearSpacing={40}
+        monthBorderColor="#ffffff"
+        dayBorderWidth={2}
+        dayBorderColor="#ffffff"
+        legends={[
+          {
+            anchor: "bottom-right",
+            direction: "row",
+            translateY: 36,
+            itemCount: 4,
+            itemWidth: 42,
+            itemHeight: 36,
+            itemsSpacing: 14,
+            itemDirection: "right-to-left",
+          },
+        ]}
+      />
+    );
+  };
+
   componentDidMount = () => {
     this.getData();
   };
@@ -48,13 +81,10 @@ class Timeline extends Component {
     const { data } = this.state;
 
     return (
-      <div key={uid}>
+      <ContainerDiv key={uid}>
         <span>{uid}</span>
-        {data &&
-          data.map((timeline) => (
-            <div key={timeline.day}>{`${timeline.day}:${timeline.value}`}</div>
-          ))}
-      </div>
+        {data && this.buildCalendar()}
+      </ContainerDiv>
     );
   };
 }
