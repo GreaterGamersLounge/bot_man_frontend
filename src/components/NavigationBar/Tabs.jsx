@@ -13,22 +13,32 @@ const StyledTabs = styled(Tabs)`
   margin-bottom: 0px;
 `;
 
-const MyTabs = props => {
+const MyTabs = (props) => {
   const { location } = props;
   const { pathname } = location;
+
+  const page = pathname.split("/")[1];
+
+  console.log("test");
+
   return (
-    <StyledTabs value={pathname} scrollButtons="auto">
-      <StyledTab to="/" value="/" label="Home" component={Link} />
-      <StyledTab to="/users" value="/users" label="Users" component={Link} />
-      <StyledTab to="/servers" value="/servers" label="Servers" component={Link} />
+    <StyledTabs value={page} scrollButtons="auto">
+      <StyledTab to="/" value="" label="Home" component={Link} />
+      <StyledTab to="/users" value="users" label="Users" component={Link} />
+      <StyledTab
+        to="/servers"
+        value="servers"
+        label="Servers"
+        component={Link}
+      />
     </StyledTabs>
   );
 };
 
 MyTabs.propTypes = {
   location: PropTypes.shape({
-    pathname: PropTypes.string
-  }).isRequired
+    pathname: PropTypes.string,
+  }).isRequired,
 };
 
 export default withRouter(MyTabs);

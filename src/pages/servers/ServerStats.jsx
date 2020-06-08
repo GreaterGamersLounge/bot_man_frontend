@@ -34,7 +34,7 @@ class ServerStats extends Component {
 
     const { uid } = this.props.match.params;
 
-    return <div>{uid}</div>;
+    return <div key={uid}>{uid}</div>;
   }
 }
 
