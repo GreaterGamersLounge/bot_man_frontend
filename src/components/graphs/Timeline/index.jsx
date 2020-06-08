@@ -54,8 +54,6 @@ class Timeline extends Component {
         minValue={1}
         emptyColor="#eeeeee"
         colors={[
-          "#F7FCF5",
-          "#E5F5E0",
           "#C7E9C0",
           "#A1D99B",
           "#74C476",
@@ -76,7 +74,7 @@ class Timeline extends Component {
             anchor: "bottom-right",
             direction: "row",
             translateY: 0,
-            itemCount: 4,
+            itemCount: 5,
             itemWidth: 42,
             itemHeight: 36,
             itemsSpacing: 14,
