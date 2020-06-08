@@ -7,8 +7,8 @@ import { ResponsiveCalendar } from "@nivo/calendar";
 const ContainerDiv = styled.div`
   width: 80vw;
   height: 300px;
+  padding-top: 50px;
   padding-left: 10vw;
-  /* background-color: red; */
 `;
 
 class Timeline extends Component {
@@ -16,7 +16,7 @@ class Timeline extends Component {
     super();
 
     this.state = {
-      data: [],
+      data: null,
     };
   }
 
@@ -44,23 +44,38 @@ class Timeline extends Component {
   buildCalendar = () => {
     const { data } = this.state;
 
+    if (data.length === 0) return "";
+
     return (
       <ResponsiveCalendar
         data={data}
-        from="2020-03-31"
-        to="2020-06-08"
+        from={data[0].day}
+        to={data[data.length - 1].day}
+        minValue={1}
         emptyColor="#eeeeee"
-        colors={["#61cdbb", "#97e3d5", "#e8c1a0", "#f47560"]}
-        margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
-        yearSpacing={40}
-        monthBorderColor="#ffffff"
-        dayBorderWidth={2}
+        colors={[
+          "#F7FCF5",
+          "#E5F5E0",
+          "#C7E9C0",
+          "#A1D99B",
+          "#74C476",
+          "#41AB5D",
+          "#238B45",
+          "#006D2C",
+          "#00441B",
+        ]}
+        align="top"
+        margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+        yearSpacing={65}
+        monthBorderColor="#050505"
+        monthBorderWidth={2}
+        dayBorderWidth={3}
         dayBorderColor="#ffffff"
         legends={[
           {
             anchor: "bottom-right",
             direction: "row",
-            translateY: 36,
+            translateY: 0,
             itemCount: 4,
             itemWidth: 42,
             itemHeight: 36,
@@ -81,10 +96,7 @@ class Timeline extends Component {
     const { data } = this.state;
 
     return (
-      <ContainerDiv key={uid}>
-        <span>{uid}</span>
-        {data && this.buildCalendar()}
-      </ContainerDiv>
+      <ContainerDiv key={uid}>{data && this.buildCalendar()}</ContainerDiv>
     );
   };
 }
