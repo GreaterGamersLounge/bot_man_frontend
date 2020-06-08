@@ -69,7 +69,7 @@ class ServersList extends Component {
       <StyledDiv>
         <h1>Servers</h1>
         <ServerContainer>
-          {serverIcons.length == 0 ? placeholderList : serverIcons}
+          {serverIcons.length === 0 ? placeholderList : serverIcons}
         </ServerContainer>
       </StyledDiv>
     );
