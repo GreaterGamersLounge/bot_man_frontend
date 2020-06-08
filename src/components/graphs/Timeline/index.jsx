@@ -19,7 +19,6 @@ class Timeline extends Component {
 
   getData = () => {
     const { uid } = this.props;
-    console.log("test");
     const token = localStorage.token;
 
     if (token) {
@@ -33,12 +32,9 @@ class Timeline extends Component {
       })
         .then((resp) => resp.json())
         .then((data) => {
-          console.log("DATA");
-          console.log(data);
-
-          // this.setState({
-          //   data,
-          // });
+          this.setState({
+            data: data.timeline,
+          });
         });
     }
   };
@@ -49,8 +45,17 @@ class Timeline extends Component {
 
   render = () => {
     const { uid } = this.props;
+    const { data } = this.state;
 
-    return <div key={uid}>{uid}</div>;
+    return (
+      <div key={uid}>
+        <span>{uid}</span>
+        {data &&
+          data.map((timeline) => (
+            <div key={timeline.day}>{`${timeline.day}:${timeline.value}`}</div>
+          ))}
+      </div>
+    );
   };
 }
 
