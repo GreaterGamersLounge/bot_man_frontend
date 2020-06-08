@@ -2,30 +2,30 @@ import { LOGIN_USER, LOGOUT_USER } from "../action_types";
 import { URL, API_URL } from "../../components/config";
 
 // Action creators
-const loginUser = user => ({
+const loginUser = (user) => ({
   type: LOGIN_USER,
-  user
+  user,
 });
 const logoutUser = () => ({
-  type: LOGOUT_USER
+  type: LOGOUT_USER,
 });
 
 // Action helpers
-export const userLogin = user => dispatch => {
+export const userLogin = (user) => (dispatch) => {
   return fetch(`${API_URL}/users/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Accept: "application/json"
+      Accept: "application/json",
     },
     body: JSON.stringify({
       user: {
-        ...user
-      }
-    })
+        ...user,
+      },
+    }),
   })
-    .then(resp => resp.json())
-    .then(data => {
+    .then((resp) => resp.json())
+    .then((data) => {
       console.log(data);
 
       if (data.errors) {
@@ -38,29 +38,29 @@ export const userLogin = user => dispatch => {
     });
 };
 
-export const userLogout = () => dispatch => {
+export const userLogout = () => (dispatch) => {
   localStorage.removeItem("token");
   dispatch(logoutUser());
 };
 
-export const userCheckToken = () => dispatch => {
+export const userCheckToken = () => (dispatch) => {
   const token = localStorage.token;
   if (token) {
     return fetch(`${URL}/users/profile`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     })
-      .then(resp => resp.json())
-      .then(data => {
+      .then((resp) => resp.json())
+      .then((data) => {
         if (data.id) {
           // The user token is valid
           dispatch(
             loginUser({
               ...data,
-              token
+              token,
             })
           );
         } else {
@@ -76,7 +76,7 @@ const initialState = {
   id: null,
   email: "",
   isSignedIn: false,
-  token: localStorage.token || ""
+  token: localStorage.token || "",
 };
 
 const userReducer = (state = initialState, action) => {

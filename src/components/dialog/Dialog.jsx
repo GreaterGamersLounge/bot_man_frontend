@@ -37,18 +37,18 @@ DialogTemplate.propTypes = {
     open: PropTypes.bool,
     object: PropTypes.shape({
       title: PropTypes.string,
-      content: PropTypes.object
-    })
+      content: PropTypes.object,
+    }),
   }).isRequired,
-  _updateDialog: PropTypes.func.isRequired
+  _updateDialog: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
-  dialog: state.dialog
+const mapStateToProps = (state) => ({
+  dialog: state.dialog,
 });
 
 const mapDispatchToProps = {
-  _updateDialog: updateDialog
+  _updateDialog: updateDialog,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DialogTemplate);

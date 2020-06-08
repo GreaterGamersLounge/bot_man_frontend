@@ -3,6 +3,8 @@ import { Switch, Route } from "react-router";
 import Appbar from "../NavigationBar/Appbar";
 import Dialog from "../dialog/Dialog";
 import UsersList from "../../pages/users/UsersList";
+import ServersList from "../../pages/servers/ServersList";
+import ServerStats from "../../pages/servers/ServerStats";
 import { userCheckToken } from "../../redux/user";
 import { connect } from "react-redux";
 import HomePage from "../../pages/home";
@@ -20,6 +22,11 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={() => <HomePage />} />
           <Route path="/users" render={() => <UsersList />} />
+          <Route exact path="/servers" render={() => <ServersList />} />
+          <Route
+            path="/servers/:uid"
+            render={(props) => <ServerStats {...props} />}
+          />
         </Switch>
         <Dialog />
       </div>
@@ -28,7 +35,7 @@ class App extends Component {
 }
 
 const mapDispatchToProps = {
-  _userCheckToken: userCheckToken
+  _userCheckToken: userCheckToken,
 };
 
 export default connect(null, mapDispatchToProps)(App);
