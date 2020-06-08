@@ -19,8 +19,6 @@ const MyTabs = (props) => {
 
   const page = pathname.split("/")[1];
 
-  console.log("test");
-
   return (
     <StyledTabs value={page} scrollButtons="auto">
       <StyledTab to="/" value="" label="Home" component={Link} />

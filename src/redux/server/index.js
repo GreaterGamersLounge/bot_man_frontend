@@ -20,7 +20,7 @@ export const loadAvailableServers = () => (dispatch) => {
       },
     })
       .then((resp) => resp.json())
-      .then((data) => {
+      .then((data) => {       
         dispatch(loadServers(data.servers));
       });
   }

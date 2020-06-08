@@ -58,6 +58,7 @@ class ServersList extends Component {
       servers &&
       servers.map((server) => (
         <ServerIcon
+          key={server.uid}
           name={server.name}
           iconUrl={server.iconUrl}
           uid={server.uid}
